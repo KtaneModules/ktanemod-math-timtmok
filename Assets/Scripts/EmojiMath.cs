@@ -26,7 +26,7 @@ public class EmojiMath : MonoBehaviour
 	};
 
 	private MathPuzzle _puzzle;
-	private string _answer;
+	private string _answer = string.Empty;
 	private int _sign = 1;
 
 	void Start()
@@ -72,7 +72,17 @@ public class EmojiMath : MonoBehaviour
 
 			rightAnswer *= _sign;
 
-			if (rightAnswer == int.Parse(_answer))
+            var parsedAnswer = 0;
+			try
+			{
+				parsedAnswer = int.Parse(_answer);
+			}
+			catch (FormatException e)
+			{
+				GetComponent<KMBombModule>().HandleStrike();
+				return false;
+			}
+			if (rightAnswer == parsedAnswer)
 			{
 				GetComponent<KMBombModule>().HandlePass();
 			}
