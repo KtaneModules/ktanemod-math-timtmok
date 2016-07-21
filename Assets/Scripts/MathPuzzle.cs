@@ -1,3 +1,6 @@
+using System;
+using Debug = UnityEngine.Debug;
+
 public class MathPuzzle
 {
 	public int Operand1;
@@ -34,5 +37,34 @@ public class MathPuzzle
 			default:
 				return Operation.Addition;
 		}
+	}
+
+	public bool CheckAnswer(string answer, int sign)
+	{
+		int rightAnswer;
+		switch (Operator)
+		{
+			case MathPuzzle.Operation.Addition:
+				rightAnswer = Operand1 + Operand2;
+				break;
+			case MathPuzzle.Operation.Subtraction:
+				rightAnswer = Operand1 - Operand2;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
+
+		int parsedAnswer;
+		try
+		{
+			parsedAnswer = int.Parse(answer) * sign;
+		}
+		catch (FormatException e)
+		{
+			Debug.Log(e.Message);
+			return false;
+		}
+
+		return rightAnswer == parsedAnswer;
 	}
 }

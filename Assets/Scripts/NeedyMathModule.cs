@@ -1,66 +1,39 @@
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class NeedyMathModule : MonoBehaviour
+public class NeedyMathModule : MathModule
 {
-	public KMSelectable[] Buttons;
-	public GameObject MathDisplay;
-	private string _answer;
-
-	private enum Operation
-	{
-		Addition = 0,
-		Subtraction
-	}
+	public TextMesh MathDisplay;
 
 	void Awake()
 	{
 		GetComponent<KMNeedyModule>().OnTimerExpired += OnTimerExpired;
 		Init();
-		SetQuestion();
 	}
 
-	private void Init()
+	protected override void Init()
 	{
-		foreach (var button in Buttons)
-		{
-			button.OnInteract += delegate () {
-				_answer += button.GetComponent<TextMesh>().text;
-				return false;
-			};
-		}
+		base.Init();
+		SetDisplay();
 	}
 
-	private void SetQuestion()
+	private void SetDisplay()
 	{
-		var op1 = Random.Range(0, 99);
-		var op2 = Random.Range(0, 99);
-		var operation = Random.Range(0, 1);
-
-		string operationText;
-
-		switch (operation)
-		{
-			case (int) Operation.Addition:
-				operationText = "+";
-				break;
-			case (int) Operation.Subtraction:
-				operationText = "-";
-				break;
-			default:
-				Debug.LogError("Unknown operation type");
-				operationText = "?";
-				break;
-		}
-
-		MathDisplay.GetComponent<TextMesh>().text = string.Format("{0} {1} {2}", op1, operationText, op2);
+		var questionText = Puzzle.Operand1 + MathPuzzle.GetOperationString(Puzzle.Operator) + Puzzle.Operand2;
+		MathDisplay.text = questionText;
 	}
 
-	protected bool Solve()
+	protected override void Solve()
 	{
-		GetComponent<KMNeedyModule>().OnPass();
+		if (Puzzle.CheckAnswer(Answer, Sign))
+			GetComponent<KMNeedyModule>().OnPass();
+		else
+			GetComponent<KMNeedyModule>().OnStrike();
 
-		return false;
+		Answer = string.Empty;
+		Sign = 1;
+
+		Puzzle = MathFactory.Instance.GenerateQuestion();
+		SetDisplay();
 	}
 
 	protected void OnTimerExpired()
