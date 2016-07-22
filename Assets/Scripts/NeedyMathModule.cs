@@ -3,6 +3,7 @@ using UnityEngine;
 public class NeedyMathModule : MathModule
 {
 	public TextMesh MathDisplay;
+	public TextMesh MathDisplayAnswer;
 
 	void Awake()
 	{
@@ -26,6 +27,14 @@ public class NeedyMathModule : MathModule
 	{
 		base.Init();
 		SetDisplay();
+		MathDisplayAnswer.text = string.Empty;
+		OnAnswerUpdate += SetAnswerDisplay;
+	}
+
+	private void SetAnswerDisplay()
+	{
+		var sign = Sign == 1 ? "" : "-";
+		MathDisplayAnswer.text = sign + Answer;
 	}
 
 	private void SetDisplay()

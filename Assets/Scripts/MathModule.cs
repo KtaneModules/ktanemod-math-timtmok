@@ -7,6 +7,9 @@ public abstract class MathModule : MonoBehaviour
 	protected string Answer = string.Empty;
 	protected int Sign = 1;
 	protected MathPuzzle Puzzle;
+	protected AnswerUpdate OnAnswerUpdate;
+
+	protected delegate void AnswerUpdate();
 
 	public KMSelectable[] Buttons;
 
@@ -25,6 +28,7 @@ public abstract class MathModule : MonoBehaviour
 		Buttons[Enter].OnInteract += delegate
 		{
 			Solve();
+			OnAnswerUpdate();
 			return false;
 		};
 	}
@@ -36,6 +40,7 @@ public abstract class MathModule : MonoBehaviour
 		Buttons[Minus].OnInteract += delegate
 		{
 			Sign *= -1;
+			OnAnswerUpdate();
 			return false;
 		};
 	}
@@ -48,6 +53,7 @@ public abstract class MathModule : MonoBehaviour
 			button.OnInteract += delegate
 			{
                 Answer += button.GetComponentInChildren<TextMesh>().text;
+				OnAnswerUpdate();
 				return false;
 			};
 		}
