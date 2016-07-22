@@ -47,7 +47,7 @@ public abstract class MathModule : MonoBehaviour
 			var button = Buttons[i];
 			button.OnInteract += delegate
 			{
-				Answer += button.GetComponentInChildren<TextMesh>().text;
+                Answer += button.GetComponentInChildren<TextMesh>().text;
 				return false;
 			};
 		}

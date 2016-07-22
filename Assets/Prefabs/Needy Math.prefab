@@ -255,7 +255,7 @@ GameObject:
   - 33: {fileID: 3382598}
   - 23: {fileID: 2327490}
   m_Layer: 0
-  m_Name: Screen
+  m_Name: ScreenBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1688,7 +1688,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126186}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
@@ -3294,9 +3294,11 @@ MonoBehaviour:
   m_Script: {fileID: 1718998123, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CountdownTime: 25
-  ModuleType: NeedyMath
+  CountdownTime: 40
+  ModuleType: Needy Math
   ModuleDisplayName: Needy Math
+  RequiresTimerVisibility: 0
+  WarnAtFiveSeconds: 1
 --- !u!114 &11437266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3608,7 +3610,7 @@ MonoBehaviour:
   - {fileID: 11437266}
   - {fileID: 11421564}
   - {fileID: 11469288}
-  IsPassThrough: 1
+  IsPassThrough: 0
   ChildRowLength: 4
   Highlight: {fileID: 11406958}
   SelectableArea: {fileID: 0}

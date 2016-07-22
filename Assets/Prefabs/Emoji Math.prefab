@@ -3388,7 +3388,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 112556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73edc8fce13044c4d87b8ddcf4c6fdbc, type: 3}
+  m_Script: {fileID: 11500000, guid: b6492499aaa2583498dcb4867f02c38c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Buttons:
@@ -3434,8 +3434,9 @@ MonoBehaviour:
   m_Script: {fileID: -119419473, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModuleType: EmojiMath
+  ModuleType: Emoji Math
   ModuleDisplayName: Emoji Math
+  RequiresTimerVisibility: 0
 --- !u!114 &11439548
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,8 +6,20 @@ public class NeedyMathModule : MathModule
 
 	void Awake()
 	{
+		GetComponent<KMNeedyModule>().OnNeedyActivation += OnNeedyActivation;
+		GetComponent<KMNeedyModule>().OnNeedyDeactivation += OnNeedyDeactivation;
 		GetComponent<KMNeedyModule>().OnTimerExpired += OnTimerExpired;
 		Init();
+	}
+
+	protected void OnNeedyDeactivation()
+	{
+
+	}
+
+	protected void OnNeedyActivation()
+	{
+		
 	}
 
 	protected override void Init()
@@ -25,9 +37,15 @@ public class NeedyMathModule : MathModule
 	protected override void Solve()
 	{
 		if (Puzzle.CheckAnswer(Answer, Sign))
-			GetComponent<KMNeedyModule>().OnPass();
+		{
+			Debug.Log("Pass!");
+			GetComponent<KMNeedyModule>().HandlePass();
+		}
 		else
-			GetComponent<KMNeedyModule>().OnStrike();
+		{
+			Debug.Log("Strike!");
+			GetComponent<KMNeedyModule>().HandleStrike();
+		}
 
 		Answer = string.Empty;
 		Sign = 1;
@@ -38,6 +56,6 @@ public class NeedyMathModule : MathModule
 
 	protected void OnTimerExpired()
 	{
-		GetComponent<KMNeedyModule>().OnStrike();
+		GetComponent<KMNeedyModule>().HandleStrike();
 	}
 }

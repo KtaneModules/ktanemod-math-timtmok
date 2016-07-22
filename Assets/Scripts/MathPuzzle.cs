@@ -65,6 +65,9 @@ public class MathPuzzle
 			return false;
 		}
 
+		Debug.Log("Answer: " + parsedAnswer);
+		Debug.Log("Correct Answer: " + rightAnswer);
+
 		return rightAnswer == parsedAnswer;
 	}
 }
