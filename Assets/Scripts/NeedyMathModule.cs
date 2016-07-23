@@ -46,7 +46,13 @@ public class NeedyMathModule : MathModule
 
 	protected override void Solve()
 	{
-		if (Puzzle.CheckAnswer(Answer, Sign))
+		var submittedAnswer = Answer;
+		var submittedSign = Sign;
+		Answer = string.Empty;
+		Sign = 1;
+		SetAnswerDisplay();
+
+		if (Puzzle.CheckAnswer(submittedAnswer, submittedSign))
 		{
 			Debug.Log("Pass!");
 			MathDisplay.text = string.Empty;
@@ -57,12 +63,6 @@ public class NeedyMathModule : MathModule
 			Debug.Log("Strike!");
 			GetComponent<KMNeedyModule>().HandleStrike();
 		}
-
-		Answer = string.Empty;
-		Sign = 1;
-		SetAnswerDisplay();
-
-		Puzzle = MathFactory.Instance.GenerateQuestion();
 	}
 
 	protected void OnTimerExpired()
