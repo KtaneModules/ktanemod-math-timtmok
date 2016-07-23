@@ -55,6 +55,11 @@ public class EmojiMathModule : MathModule
 	{
 		var convertedDigits = new List<string>();
 
+		if (operand == 0)
+		{
+			return _emojiNumbers[0];
+		}
+
 		while (operand > 0)
 		{
 			var digit = operand % 10;

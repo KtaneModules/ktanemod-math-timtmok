@@ -27,8 +27,8 @@ public abstract class MathModule : MonoBehaviour
 	{
 		Buttons[Enter].OnInteract += delegate
 		{
+			Debug.Log("Enter button pressed");
 			Solve();
-			OnAnswerUpdate();
 			return false;
 		};
 	}
@@ -39,6 +39,7 @@ public abstract class MathModule : MonoBehaviour
 	{
 		Buttons[Minus].OnInteract += delegate
 		{
+			Debug.Log("Minus button pressed");
 			Sign *= -1;
 			OnAnswerUpdate();
 			return false;
@@ -52,7 +53,10 @@ public abstract class MathModule : MonoBehaviour
 			var button = Buttons[i];
 			button.OnInteract += delegate
 			{
-                Answer += button.GetComponentInChildren<TextMesh>().text;
+				var buttonText = button.GetComponentInChildren<TextMesh>().text;
+				// ReSharper disable once UseStringInterpolation
+				Debug.Log(string.Format("{0} button pressed", buttonText));
+				Answer += buttonText;
 				OnAnswerUpdate();
 				return false;
 			};

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class NeedyMathModule : MathModule
@@ -15,19 +16,19 @@ public class NeedyMathModule : MathModule
 
 	protected void OnNeedyDeactivation()
 	{
-
+		MathDisplay.text = string.Empty;
+		MathDisplayAnswer.text = string.Empty;
 	}
 
 	protected void OnNeedyActivation()
 	{
-		
+		Puzzle = MathFactory.Instance.GenerateQuestion();
+		SetDisplay();
 	}
 
 	protected override void Init()
 	{
 		base.Init();
-		SetDisplay();
-		MathDisplayAnswer.text = string.Empty;
 		OnAnswerUpdate += SetAnswerDisplay;
 	}
 
@@ -48,6 +49,7 @@ public class NeedyMathModule : MathModule
 		if (Puzzle.CheckAnswer(Answer, Sign))
 		{
 			Debug.Log("Pass!");
+			MathDisplay.text = string.Empty;
 			GetComponent<KMNeedyModule>().HandlePass();
 		}
 		else
@@ -58,9 +60,9 @@ public class NeedyMathModule : MathModule
 
 		Answer = string.Empty;
 		Sign = 1;
+		SetAnswerDisplay();
 
 		Puzzle = MathFactory.Instance.GenerateQuestion();
-		SetDisplay();
 	}
 
 	protected void OnTimerExpired()

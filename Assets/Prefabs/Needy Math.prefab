@@ -3217,14 +3217,14 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102990}
-  m_Text: MATH?
+  m_Text: 88-99
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 224
+  m_FontSize: 280
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 1ebe1d96973a920409b439b3a0e2bb63, type: 3}
@@ -3280,14 +3280,14 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135760}
-  m_Text: MATH!
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 224
+  m_FontSize: 280
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 1ebe1d96973a920409b439b3a0e2bb63, type: 3}
@@ -3805,17 +3805,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 0}
   Children:
-  - {fileID: 11428284}
   - {fileID: 11493538}
   - {fileID: 11467328}
   - {fileID: 11403418}
+  - {fileID: 11428284}
   - {fileID: 11414866}
   - {fileID: 11458914}
   - {fileID: 11465220}
+  - {fileID: 11421564}
   - {fileID: 11474912}
   - {fileID: 11479960}
   - {fileID: 11437266}
-  - {fileID: 11421564}
   - {fileID: 11469288}
   IsPassThrough: 0
   ChildRowLength: 4
