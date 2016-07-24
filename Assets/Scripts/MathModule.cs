@@ -11,6 +11,8 @@ public abstract class MathModule : MonoBehaviour
 
 	protected delegate void AnswerUpdate();
 
+	// ReSharper disable once InconsistentNaming
+	public KMAudio KMAudio;
 	public KMSelectable[] Buttons;
 
 	protected virtual void Init()
@@ -21,6 +23,19 @@ public abstract class MathModule : MonoBehaviour
 		SetUpNumberButtons();
 		SetUpMinusButton();
 		SetUpEnterButton();
+		SetUpButtonAudio();
+	}
+
+	private void SetUpButtonAudio()
+	{
+		foreach (var button in Buttons)
+		{
+			button.OnInteract += delegate
+			{
+				if (KMAudio != null) KMAudio.HandlePlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, transform);
+				return false;
+			};
+		}
 	}
 
 	private void SetUpEnterButton()
@@ -41,7 +56,7 @@ public abstract class MathModule : MonoBehaviour
 		{
 			Debug.Log("Minus button pressed");
 			Sign *= -1;
-			OnAnswerUpdate();
+			if (OnAnswerUpdate != null) OnAnswerUpdate();
 			return false;
 		};
 	}
@@ -57,7 +72,7 @@ public abstract class MathModule : MonoBehaviour
 				// ReSharper disable once UseStringInterpolation
 				Debug.Log(string.Format("{0} button pressed", buttonText));
 				Answer += buttonText;
-				OnAnswerUpdate();
+				if (OnAnswerUpdate != null) OnAnswerUpdate();
 				return false;
 			};
 		}

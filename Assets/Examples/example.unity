@@ -218,6 +218,10 @@ Prefab:
       propertyPath: m_Name
       value: Needy_Math
       objectReference: {fileID: 0}
+    - target: {fileID: 113266, guid: 00e9615969527414b8593f0b6988ffb6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00e9615969527414b8593f0b6988ffb6, type: 2}
   m_IsPrefabParent: 0
@@ -313,10 +317,6 @@ Prefab:
     - target: {fileID: 112556, guid: d10cfbece335a044fb5ed7388de530dc, type: 2}
       propertyPath: m_Name
       value: Emoji_Math
-      objectReference: {fileID: 0}
-    - target: {fileID: 112556, guid: d10cfbece335a044fb5ed7388de530dc, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d10cfbece335a044fb5ed7388de530dc, type: 2}
