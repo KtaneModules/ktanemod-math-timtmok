@@ -18,6 +18,7 @@ public class NeedyMathModule : MathModule
 	{
 		MathDisplay.text = string.Empty;
 		MathDisplayAnswer.text = string.Empty;
+		Answer = string.Empty;
 	}
 
 	protected void OnNeedyActivation()
