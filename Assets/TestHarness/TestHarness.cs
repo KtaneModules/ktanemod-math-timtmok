@@ -1,12 +1,7 @@
 ﻿using UnityEngine;
-<<<<<<< HEAD
-using System.Collections;
-using System.Collections.Generic;
-=======
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
 
 public class TestHarness : MonoBehaviour
 {
@@ -14,12 +9,9 @@ public class TestHarness : MonoBehaviour
     TestSelectable currentSelectable;
     TestSelectableArea currentSelectableArea;
 
-<<<<<<< HEAD
-=======
     AudioSource audioSource;
     List<AudioClip> audioClips;
 
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
     void Awake()
     {
         AddHighlightables();
@@ -29,18 +21,11 @@ public class TestHarness : MonoBehaviour
     void Start()
     {
         currentSelectable = GetComponent<TestSelectable>();
-<<<<<<< HEAD
-        
-        KMBombModule[] modules = FindObjectsOfType<KMBombModule>();
-        currentSelectable.Children = new TestSelectable[modules.Length];
-        for (int i=0; i < modules.Length; i++)
-=======
 
         KMBombModule[] modules = FindObjectsOfType<KMBombModule>();
         KMNeedyModule[] needyModules = FindObjectsOfType<KMNeedyModule>();
         currentSelectable.Children = new TestSelectable[modules.Length + needyModules.Length];
         for (int i = 0; i < modules.Length; i++)
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
         {
             currentSelectable.Children[i] = modules[i].GetComponent<TestSelectable>();
             modules[i].GetComponent<TestSelectable>().Parent = currentSelectable;
@@ -49,9 +34,6 @@ public class TestHarness : MonoBehaviour
             modules[i].OnStrike = delegate () { Debug.Log("Strike"); return false; };
         }
 
-<<<<<<< HEAD
-        currentSelectable.ActivateChildSelectableAreas();
-=======
         for (int i = 0; i < needyModules.Length; i++)
         {
             currentSelectable.Children[modules.Length + i] = needyModules[i].GetComponent<TestSelectable>();
@@ -106,7 +88,6 @@ public class TestHarness : MonoBehaviour
                 audioSource.PlayOneShot(clip);
             }
         }
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
     }
 
     void Update()
@@ -116,41 +97,25 @@ public class TestHarness : MonoBehaviour
         RaycastHit hit;
         int layerMask = 1 << 11;
         bool rayCastHitSomething = Physics.Raycast(ray, out hit, 1000, layerMask);
-<<<<<<< HEAD
-        if(rayCastHitSomething)
-=======
         if (rayCastHitSomething)
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
         {
             TestSelectableArea hitArea = hit.collider.GetComponent<TestSelectableArea>();
             if (hitArea != null)
             {
                 if (currentSelectableArea != hitArea)
                 {
-<<<<<<< HEAD
-                    if(currentSelectableArea != null)
-                    {
-                        currentSelectableArea.Selectable.Deselect();
-                    }
-                    
-=======
                     if (currentSelectableArea != null)
                     {
                         currentSelectableArea.Selectable.Deselect();
                     }
 
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
                     hitArea.Selectable.Select();
                     currentSelectableArea = hitArea;
                 }
             }
             else
             {
-<<<<<<< HEAD
-                if(currentSelectableArea != null)
-=======
                 if (currentSelectableArea != null)
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
                 {
                     currentSelectableArea.Selectable.Deselect();
                     currentSelectableArea = null;
@@ -166,15 +131,9 @@ public class TestHarness : MonoBehaviour
             }
         }
 
-<<<<<<< HEAD
-        if(Input.GetMouseButtonDown(0))
-        {
-            if(currentSelectableArea != null && currentSelectableArea.Selectable.Interact())
-=======
         if (Input.GetMouseButtonDown(0))
         {
             if (currentSelectableArea != null && currentSelectableArea.Selectable.Interact())
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
             {
                 currentSelectable.DeactivateChildSelectableAreas(currentSelectableArea.Selectable);
                 currentSelectable = currentSelectableArea.Selectable;
@@ -182,15 +141,9 @@ public class TestHarness : MonoBehaviour
             }
         }
 
-<<<<<<< HEAD
-        if(Input.GetMouseButtonDown(1))
-        {
-            if(currentSelectable.Parent != null)
-=======
         if (Input.GetMouseButtonDown(1))
         {
             if (currentSelectable.Parent != null)
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
             {
                 currentSelectable.DeactivateChildSelectableAreas(currentSelectable.Parent);
                 currentSelectable = currentSelectable.Parent;
@@ -203,11 +156,7 @@ public class TestHarness : MonoBehaviour
     {
         List<KMHighlightable> highlightables = new List<KMHighlightable>(GameObject.FindObjectsOfType<KMHighlightable>());
 
-<<<<<<< HEAD
-        foreach(KMHighlightable highlightable in highlightables)
-=======
         foreach (KMHighlightable highlightable in highlightables)
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
         {
             TestHighlightable highlight = highlightable.gameObject.AddComponent<TestHighlightable>();
 
@@ -233,13 +182,6 @@ public class TestHarness : MonoBehaviour
             testSelectable.Children = new TestSelectable[selectable.Children.Length];
             for (int i = 0; i < selectable.Children.Length; i++)
             {
-<<<<<<< HEAD
-                testSelectable.Children[i] = selectable.Children[i].GetComponent<TestSelectable>();
-            }
-        }
-    }
-}
-=======
                 if (selectable.Children[i] != null)
                 {
                     testSelectable.Children[i] = selectable.Children[i].GetComponent<TestSelectable>();
@@ -315,4 +257,3 @@ public class TestHarness : MonoBehaviour
         light.intensity = 2.7f;
     }
 }
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7

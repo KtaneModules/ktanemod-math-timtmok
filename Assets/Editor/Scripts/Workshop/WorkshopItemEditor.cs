@@ -6,11 +6,7 @@ using UnityEngine;
 [CustomEditor(typeof(WorkshopItem))]
 public class WorkshopItemEditor : Editor
 {
-<<<<<<< HEAD
-    private static string[] tags = { "Module", "Setup Room", "Gameplay Room", "Audio", "Bomb Casing", "Other" };
-=======
     private static string[] tags = { "Regular Module", "Needy Module", "Missions", "Setup Room", "Gameplay Room", "Audio", "Bomb Casing", "Widget", "Other" };
->>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
 
     public override void OnInspectorGUI()
     {
