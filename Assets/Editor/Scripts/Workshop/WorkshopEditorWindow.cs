@@ -103,7 +103,11 @@ public class WorkshopEditorWindow : EditorWindow
 
             if (dir.Exists)
             {
+<<<<<<< HEAD
                 FileInfo[] files = dir.GetFiles();
+=======
+                FileInfo[] files = dir.GetFiles("*.*", SearchOption.AllDirectories);
+>>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
                 long totalSize = 0;
                 foreach (var file in files)
                 {

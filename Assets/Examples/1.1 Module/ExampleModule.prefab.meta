@@ -2,5 +2,9 @@ fileFormatVersion: 2
 guid: 857b932e96426ad48a7fadaae993e27e
 NativeFormatImporter:
   userData: 
+<<<<<<< HEAD
   assetBundleName: 
+=======
+  assetBundleName: mod.bundle
+>>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
   assetBundleVariant: 

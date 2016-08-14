@@ -5,10 +5,19 @@ public class ExampleModule : MonoBehaviour
     public KMSelectable[] buttons;
 
     int correctIndex;
+<<<<<<< HEAD
+=======
+    bool isActivated = false;
+>>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
 
     void Start()
     {
         Init();
+<<<<<<< HEAD
+=======
+
+        GetComponent<KMBombModule>().OnActivate += ActivateModule;
+>>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
     }
 
     void Init()
@@ -26,6 +35,7 @@ public class ExampleModule : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     void OnPress(bool correctButton)
     {
         Debug.Log("Pressed " + correctButton + " button");
@@ -36,6 +46,33 @@ public class ExampleModule : MonoBehaviour
         else
         {
             GetComponent<KMBombModule>().HandleStrike();
+=======
+    void ActivateModule()
+    {
+        isActivated = true;
+    }
+
+    void OnPress(bool correctButton)
+    {
+        GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, transform);
+
+        if (!isActivated)
+        {
+            Debug.Log("Pressed button before module has been activated!");
+            GetComponent<KMBombModule>().HandleStrike();
+        }
+        else
+        {
+            Debug.Log("Pressed " + correctButton + " button");
+            if (correctButton)
+            {
+                GetComponent<KMBombModule>().HandlePass();
+            }
+            else
+            {
+                GetComponent<KMBombModule>().HandleStrike();
+            }
+>>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
         }
     }
 }

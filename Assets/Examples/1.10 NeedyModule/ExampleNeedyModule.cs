@@ -6,8 +6,11 @@ public class ExampleNeedyModule : MonoBehaviour
     public KMSelectable SolveButton;
     public KMSelectable AddTimeButton;
 
+<<<<<<< HEAD
     float timeRemaining;
 
+=======
+>>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
     void Awake()
     {
         GetComponent<KMNeedyModule>().OnNeedyActivation += OnNeedyActivation;
@@ -47,8 +50,11 @@ public class ExampleNeedyModule : MonoBehaviour
             GetComponent<KMNeedyModule>().SetNeedyTimeRemaining(time + 5f);
         }
 
+<<<<<<< HEAD
 		GetComponent<KMNeedyModule>().HandleStrike();
 
+=======
+>>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
         return false;
     }
 }

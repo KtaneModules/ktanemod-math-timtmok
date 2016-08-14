@@ -892,8 +892,11 @@ td, th {
     h3 {
         page-break-after: avoid;
     }
+<<<<<<< HEAD
 }
 
 td.math-table-cell {
 	text-align: center;
+=======
+>>>>>>> 269498d64dd5143303ee2574f4f1ec320083d6f7
 }
