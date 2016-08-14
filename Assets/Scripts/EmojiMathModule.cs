@@ -22,13 +22,9 @@ public class EmojiMathModule : MathModule
 
 	void Start()
 	{
+		DisplayText.text = string.Empty;
 		Init();
-	}
-
-	protected override void Init()
-	{
-		base.Init();
-		SetDisplay();
+		GetComponent<KMBombModule>().OnActivate += SetDisplay;
 	}
 
 	protected override void Solve()

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class NeedyMathModule : MathModule
@@ -23,6 +22,7 @@ public class NeedyMathModule : MathModule
 
 	protected void OnNeedyActivation()
 	{
+		Answer = string.Empty;
 		Puzzle = MathFactory.Instance.GenerateQuestion();
 		SetDisplay();
 	}
@@ -68,6 +68,7 @@ public class NeedyMathModule : MathModule
 
 	protected void OnTimerExpired()
 	{
+		OnNeedyDeactivation();
 		GetComponent<KMNeedyModule>().HandleStrike();
 	}
 }
